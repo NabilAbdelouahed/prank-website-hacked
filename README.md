@@ -1,1 +1,1 @@
-A prank website to be opened on a mobile phone. 
+A simple prank website to give to a friend. 
