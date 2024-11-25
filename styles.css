@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: red;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  #content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #scary-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  #text {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: flicker 1s infinite;
+  }
+  
+  /* Flicker effect for the text */
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  

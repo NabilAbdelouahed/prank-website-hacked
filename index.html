@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacked</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="content">
+    <img src="scary-image.jpg" alt="Scary Face" id="scary-image">
+    <h1 id="text">CONGRATS, YOU'VE BEEN HACKED!</h1>
+  </div>
+  <audio id="scary-sound" src="scary-sound.mp3" autoplay loop></audio>
+  <button id="fullscreen-button" style="display: none;">Go Fullscreen</button>
+
+  <script>
+    // Force full volume
+    const sound = document.getElementById('scary-sound');
+    sound.volume = 1.0;
+
+    // Make sure the sound plays on mobile
+    document.addEventListener('click', () => {
+      if (sound.paused) {
+        sound.play();
+      }
+
+      // Trigger fullscreen on first interaction
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen()
+          .catch(err => console.error(`Error attempting to enable fullscreen: ${err.message}`));
+      }
+    });
+  </script>
+</body>
+</html>
