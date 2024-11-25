@@ -12,14 +12,15 @@
   </div>
   <audio id="scary-sound" src="scary-sound.mp3" autoplay loop></audio>
   <script>
-    // Force full volume
     const sound = document.getElementById('scary-sound');
+
+    // Force full volume
     sound.volume = 1.0;
 
-    // Make sure the sound plays on mobile
+    // Ensure playback on first user interaction (for autoplay restrictions)
     document.addEventListener('click', () => {
       if (sound.paused) {
-        sound.play();
+        sound.play().catch(err => console.error('Playback error:', err));
       }
 
       // Trigger fullscreen on first interaction
@@ -27,6 +28,13 @@
         document.documentElement.requestFullscreen()
           .catch(err => console.error(`Error attempting to enable fullscreen: ${err.message}`));
       }
+    });
+
+    // Fallback for browsers requiring explicit user interaction
+    window.addEventListener('load', () => {
+      sound.play().catch(err => {
+        console.log('Autoplay blocked. Waiting for user interaction...');
+      });
     });
   </script>
 </body>
